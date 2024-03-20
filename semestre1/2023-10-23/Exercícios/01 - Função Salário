@@ -1,0 +1,44 @@
+'''
+Faça uma função que recebe o salário como parâmetro e retorna o desconto em reais
+'''
+
+# def calcDescontoSalario(salario):
+#     aliq = 0
+#     if (salario <= 1903):
+#         aliq = 0
+#     elif (salario <= 2826.):
+#         aliq = 0.075
+#     elif (salario <= 3751):
+#         aliq = 0.15
+#     elif (salario <= 4664):
+#         aliq = 0.225
+#     else:
+#         aliq = 0.275
+#     return (salario * aliq)
+#
+# salarios = [1000, 2000, 3000, 4000, 5000]
+# for salario in salarios:
+#     salario -= calcDescontoSalario(salario)
+#     print(f'Você receberá R$ {salario}')
+
+def calcDescontoSalario(salarios):
+    descontos = []
+    for salario in salarios:
+        aliq = 0
+        if (salario <= 1903):
+            aliq = 0
+        elif (salario <= 2826.):
+            aliq = 0.075
+        elif (salario <= 3751):
+            aliq = 0.15
+        elif (salario <= 4664):
+            aliq = 0.225
+        else:
+            aliq = 0.275
+        descontos.append((salario * aliq))
+    return descontos
+
+valores_salarios = [1000, 2000, 3000, 4000, 5000]
+valores_desconto = calcDescontoSalario(valores_salarios)
+for i in range(len(valores_salarios)):
+    print(f'Você receberá R$ {valores_salarios[i] - valores_desconto[i]}')
