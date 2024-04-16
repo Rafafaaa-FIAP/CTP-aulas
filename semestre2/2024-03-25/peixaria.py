@@ -17,30 +17,65 @@ menu = {
   'Nomes': ['Cadastrar', 'Remover', 'Atualizar', 'Ver Informações', 'Sair']
 }
 
-def main():
-  print('Bem-vindo a peixaria!')
+# def main():
+#   print('Bem-vindo a peixaria!')
 
-  menu_id = selecionarMenu()
-  while (int(menu_id) != 0):
-    menu_id = selecionarMenu()
+#   menu_id = selecionarMenu()
+#   while (int(menu_id) != 0):
+#     menu_id = selecionarMenu()
 
-  print('Obrigado por utilizar nosso sistema!')
+#   print('Obrigado por utilizar nosso sistema!')
 
-  return
+#   return
 
-def selecionarMenu():
-  print('|----- MENU -----|')
-  for i in range(len(menu['Códigos'])):
-    print(f'{menu['Códigos'][i]} - {menu['Nomes'][i]}')
+# def selecionarMenu():
+#   print('|----- MENU -----|')
+#   for i in range(len(menu['Códigos'])):
+#     print(f'{menu['Códigos'][i]} - {menu['Nomes'][i]}')
 
-  return inputComValidacao('', menu['Códigos'])
+#   return inputComValidacao('', menu['Códigos'])
 
-def inputComValidacao(optionText, possibleOptions):
-  option = input(optionText)
-  while option not in possibleOptions:
-    print('Opção inválida!')
-    option = input(optionText)
+# def inputComValidacao(optionText, possibleOptions):
+#   option = input(optionText)
+#   while option not in possibleOptions:
+#     print('Opção inválida!')
+#     option = input(optionText)
     
-  return option
+#   return option
 
-main()
+# main()
+
+indices = {peixes["Espécies"][i] : i for i in range(len(peixes["Espécies"]))}
+def obriga_opcao(lista,msg, msg_erro = None):
+    resp = input(msg)
+    while resp not in lista:
+        print("Diga uma opção cadastrada!")
+        if msg_erro:
+            print(msg_erro)
+        resp = input(msg)
+    return resp
+def atualizar():
+    qual = obriga_opcao(indices.keys(),"Qual peixe vc quer atualizar?",'\n'.join(peixes['Espécies']))
+    indice = indices[qual]
+    for key in peixes.keys():
+        peixes[key][indice] = input(f"Diga o novo {key}")
+    return
+def cadastrar():
+    for key in peixes.keys():
+        info = input(f'Diga o/a novo/a {key}: ')
+        peixes[key].append(info)
+    return
+def infos():
+    qual = obriga_opcao(indices.keys(),"Qual peixe vc quer ver?",'\n'.join(peixes['Espécies']))
+    indice = indices[qual]
+    for key in peixes.keys():
+        print(f"{key} : {peixes[key][indice]}")
+    return
+def remover():
+    qual = obriga_opcao(indices.keys(),"Qual peixe vc quer remover?",'\n'.join(peixes['Espécies']))
+    indice = indices[qual]
+    for key in peixes.keys():
+        peixes[key].pop(indice)
+    return
+
+infos()
