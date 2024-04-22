@@ -54,23 +54,27 @@ def obriga_opcao(lista,msg, msg_erro = None):
             print(msg_erro)
         resp = input(msg)
     return resp
+
 def atualizar():
     qual = obriga_opcao(indices.keys(),"Qual peixe vc quer atualizar?",'\n'.join(peixes['Espécies']))
     indice = indices[qual]
     for key in peixes.keys():
         peixes[key][indice] = input(f"Diga o novo {key}")
     return
+
 def cadastrar():
     for key in peixes.keys():
         info = input(f'Diga o/a novo/a {key}: ')
         peixes[key].append(info)
     return
+
 def infos():
     qual = obriga_opcao(indices.keys(),"Qual peixe vc quer ver?",'\n'.join(peixes['Espécies']))
     indice = indices[qual]
     for key in peixes.keys():
         print(f"{key} : {peixes[key][indice]}")
     return
+
 def remover():
     qual = obriga_opcao(indices.keys(),"Qual peixe vc quer remover?",'\n'.join(peixes['Espécies']))
     indice = indices[qual]

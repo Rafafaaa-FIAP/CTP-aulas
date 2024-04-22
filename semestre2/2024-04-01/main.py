@@ -48,6 +48,7 @@ peixes = {
     'validade' : [9,2,10,11,7,6,3]
 }
 dicionario_de_indices = {peixes["Espécies"][i] : i for i in range(len(peixes["Espécies"])) }
+
 def forca_opcao(msg,opcoes,msg_erro = None):
     resposta = input(msg)
     while resposta not in opcoes:
@@ -56,6 +57,7 @@ def forca_opcao(msg,opcoes,msg_erro = None):
             print(msg_erro)
         resposta = input(msg)
     return resposta
+
 def remover():
     peixe = forca_opcao("Qual peixe vc deseja remover?\n"
                     ,peixes['Espécies'],"\n".join(peixes["Espécies"]))
